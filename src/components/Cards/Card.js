@@ -6,7 +6,7 @@ const Card = ({ card }) => {
 
   return (
     <div
-      className={`rounded-2xl shadow-md transition-all duration-300 ${
+      className={`rounded-2xl shadow-md transition-all duration-300 cursor-pointer ${
         isHovered ? 'bg-dark-gradient text-white' : 'bg-white text-[#343C6A]'
       }`}
       onMouseEnter={() => setIsHovered(true)}
@@ -35,9 +35,9 @@ const Card = ({ card }) => {
         </div>
       </div>
       </div>
-      <div className="px-6 py-4 border-t border-gray-200 my-4" >
+      <div className="px-6 py-3 border-t border-gray-200" >
       <div className="flex justify-between items-center">
-        <p className="font-mono text-lg">{card.cardNumber}</p>
+        <p className="font-mono text-xl">{card.cardNumber}</p>
         <Icon
           name={isHovered ? 'icon-contactLight':'icon-contactless'}
           className={`${isHovered ? 'text-white' : 'text-[#8BA3CB]'}`}
