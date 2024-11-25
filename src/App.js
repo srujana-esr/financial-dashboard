@@ -1,14 +1,12 @@
 import React, { useState } from 'react';
-import { Outlet } from 'react-router-dom';
 import Sidebar from './components/Layout/Sidebar/Sidebar';
 import Header from './components/Layout/Header/Header';
+import AppRoutes from './routes/routes';
 
 const App = () => {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
 
-  const toggleSidebar = () => {
-    setSidebarOpen((prevState) => !prevState);
-  };
+  const toggleSidebar = () => setSidebarOpen((prev) => !prev);
 
   return (
     <div className="flex h-screen">
@@ -16,7 +14,7 @@ const App = () => {
       <div className="flex-1 flex flex-col">
         <Header toggleSidebar={toggleSidebar} />
         <main className="flex-grow bg-gray-100 p-6">
-          <Outlet />
+          <AppRoutes />
         </main>
       </div>
     </div>
