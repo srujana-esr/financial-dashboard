@@ -1,7 +1,8 @@
+import React from 'react';
 import { NavLink } from 'react-router-dom';
 import Icon from '../../Icon';
 
-const Sidebar = () => {
+const Sidebar = ({ isOpen, toggleSidebar }) => {
   const navItems = [
     { id: 1, label: 'Dashboard', icon: 'icon-home', to: '/' },
     { id: 2, label: 'Transactions', icon: 'icon-transfer', to: '/transactions' },
@@ -15,32 +16,47 @@ const Sidebar = () => {
   ];
 
   return (
-    <aside className="w-64 h-screen bg-gray-50 shadow-md flex flex-col">
-      <div className="flex items-center justify-center h-24 border-b border-gray-200">
-        <Icon name="icon-logo" className="mr-2" size={32}/>
-        <h1 className="text-lg font-bold" style={{fontSize:'1.563rem'}}>Soar Task</h1>
+    <aside
+      className={`fixed top-0 left-0 w-64 h-screen bg-gray-50 shadow-md transform transition-transform duration-300 ease-in-out z-50 sm:static sm:translate-x-0 ${
+        isOpen ? 'translate-x-0' : '-translate-x-full'
+      }`}
+    >
+      <div className="flex items-center justify-center h-24">
+        <div className="flex items-center">
+          <Icon name="icon-logo" className="mr-2" size={32} />
+          <h1 className="text-lg font-bold" style={{ fontSize: '1.563rem' }}>
+            Soar Task
+          </h1>
+        <button
+          onClick={toggleSidebar}
+          className="sm:hidden"
+          aria-label="Close Sidebar"
+        >
+          <Icon name="icon-close" size={24} />
+        </button>
+        </div>
       </div>
+
       <nav className="flex-grow px-6 py-6">
         <ul className="space-y-8">
           {navItems.map((item) => (
             <li key={item.id} className="pl-8">
-              <>
               <NavLink
                 to={item.to}
+                aria-label={item.label}
                 className={({ isActive }) =>
                   `flex items-center rounded-lg ${
                     isActive ? 'text-black font-bold' : 'text-gray-400'
                   }`
                 }
-                style={{fontSize:'18px'}}
+                style={{ fontSize: '18px' }}
+                onClick={() => {
+                  if (window.innerWidth < 640) toggleSidebar();
+                }}
               >
-                <Icon
-                  name={item.icon}
-                  className="mr-3"
-                />
+                <Icon name={item.icon} className="mr-3" />
                 {item.label}
               </NavLink>
-              </>
             </li>
           ))}
         </ul>
