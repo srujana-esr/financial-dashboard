@@ -1,46 +1,52 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Icon from '../Icon';
 
-const CardComponent = ({ card }) => {
-  const isDark = card.theme === 'dark';
+const Card = ({ card }) => {
+  const [isHovered, setIsHovered] = useState(card.theme === 'dark');
 
   return (
     <div
-      className={`rounded-lg p-6 ${
-        isDark ? 'bg-gray-800 text-white' : 'bg-white text-gray-800'
+      className={`rounded-2xl shadow-md transition-all duration-300 cursor-pointer ${
+        isHovered ? 'bg-dark-gradient text-white' : 'bg-white text-[#343C6A]'
       }`}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
+      <div className='p-6'>
+      <div className="flex justify-between items-center pb-4">
+        <div>
+        <p className={`text-xs font-semibold ${isHovered ? 'text-white':'text-[#718EBF]'}`}>Balance</p>
+        <h3 className="text-xl font-bold mt-2">{card.balance}</h3>
+        </div>
+        <Icon
+          name={isHovered ? 'icon-ChipCardLight' : 'icon-ChipCardDark'}
+          className={`${isHovered ? 'text-white' : 'text-[#8BA3CB]'}`}
+          size={35}
+        />
+      </div>
+      <div className="flex items-center mt-4">
+        <div>
+          <p className="text-xs">CARD HOLDER</p>
+          <p className="font-semibold">{card.cardHolder}</p>
+        </div>
+        <div className='pl-8 ml-4'>
+          <p className="text-xs">VALID THRU</p>
+          <p className="font-semibold">{card.validThru}</p>
+        </div>
+      </div>
+      </div>
+      <div className="px-6 py-3 border-t border-gray-200" >
       <div className="flex justify-between items-center">
-        <div>
-          <p className="text-sm">Balance</p>
-          <h2 className="text-2xl font-bold">{card.balance}</h2>
-        </div>
+        <p className="font-mono text-xl">{card.cardNumber}</p>
         <Icon
-          name={isDark ? 'icon-ChipCardLight' : 'icon-ChipCardDark'}
-          size={32}
+          name={isHovered ? 'icon-contactLight':'icon-contactless'}
+          className={`${isHovered ? 'text-white' : 'text-[#8BA3CB]'}`}
+          size={35}
         />
       </div>
-
-      <div className="flex justify-between mt-4">
-        <div>
-          <p className="text-sm uppercase">Card Holder</p>
-          <p className="text-lg font-medium">{card.cardHolder}</p>
-        </div>
-        <div>
-          <p className="text-sm uppercase">Valid Thru</p>
-          <p className="text-lg font-medium">{card.validThru}</p>
-        </div>
-      </div>
-
-      <div className="flex justify-between items-center mt-6">
-        <p className="text-lg font-mono">{card.cardNumber}</p>
-        <Icon
-          name={isDark ? 'icon-contactless' : 'icon-contactLight'}
-          size={24}
-        />
       </div>
     </div>
   );
 };
 
-export default CardComponent;
+export default Card;

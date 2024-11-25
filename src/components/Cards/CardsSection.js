@@ -1,29 +1,29 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchCards } from '../../redux/slices/cardsSlice';
-import CardComponent from './Card';
+import React, { useEffect, useState } from 'react';
+import { fetchCards } from '../../api/CardsApi';
+import Card from '../Cards/Card';
 
 const CardsSection = () => {
-  const dispatch = useDispatch();
-  const { cards } = useSelector((state) => state.cards);
+  const [cards, setCards] = useState([]);
 
   useEffect(() => {
-    dispatch(fetchCards());
-  }, [dispatch]);
-
-  if (!cards || cards.length === 0) {
-    return <div>Loading cards...</div>;
-  }
+    const fetchData = async () => {
+      const fetchedCards = await fetchCards();
+      setCards(fetchedCards.slice(0, 2)); // Only the first 2 cards
+    };
+    fetchData();
+  }, []);
 
   return (
     <div className="mb-7">
-      <div className="flex justify-between items-center mb-4">
-        <h2 className="text-xl font-bold text-[#343C6A]">My Cards</h2>
-        <button className="text-[#8BA3CB] hover:underline">See All</button>
+      <div className="flex items-center justify-between">
+        <h2 className="text-lg font-bold text-[#343C6A]">My Cards</h2>
+        <a href="/credit-cards" className="text-sm text-[#8BA3CB] hover:underline">
+          See All
+        </a>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-4">
         {cards.map((card) => (
-          <CardComponent key={card.id} card={card} />
+          <Card key={card.id} card={card} />
         ))}
       </div>
     </div>
