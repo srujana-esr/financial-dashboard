@@ -16,7 +16,7 @@ const Sidebar = () => {
 
   return (
     <aside className="w-64 h-screen bg-gray-50 shadow-md flex flex-col">
-      <div className="flex items-center justify-center h-24 border-b border-gray-200">
+      <div className="flex items-center justify-center h-24">
         <Icon name="icon-logo" className="mr-2" size={32}/>
         <h1 className="text-lg font-bold" style={{fontSize:'1.563rem'}}>Soar Task</h1>
       </div>
@@ -27,6 +27,7 @@ const Sidebar = () => {
               <>
               <NavLink
                 to={item.to}
+                aria-label={item.label}
                 className={({ isActive }) =>
                   `flex items-center rounded-lg ${
                     isActive ? 'text-black font-bold' : 'text-gray-400'
