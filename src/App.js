@@ -14,7 +14,6 @@ const App = () => {
           <main className="p-6">
             <Routes>
               <Route path="/" element={<Dashboard />} />
-              {/* Add other routes here */}
             </Routes>
           </main>
         </div>

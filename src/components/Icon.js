@@ -1,8 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 const Icon = ({ name, size = 24, className = '' }) => { 
-    console.log('Rendering icon:', name); // Debugging
     return(
         <svg
         className={`icon ${className}`}
@@ -16,12 +14,6 @@ const Icon = ({ name, size = 24, className = '' }) => {
         </svg>
 
 );
-}
-
-Icon.propTypes = {
-  name: PropTypes.string.isRequired, 
-  size: PropTypes.number,
-  className: PropTypes.string,
 };
 
 export default Icon;
