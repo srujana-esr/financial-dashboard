@@ -6,7 +6,7 @@ const Card = ({ card }) => {
 
   return (
     <div
-      className={`rounded-2xl shadow-md transition-all duration-300 ${
+      className={`rounded-2xl shadow-md transition-all duration-300 cursor-pointer ${
         isHovered ? 'bg-dark-gradient text-white' : 'bg-white text-[#343C6A]'
       }`}
       onMouseEnter={() => setIsHovered(true)}

@@ -15,7 +15,6 @@ const CreditCardsPage = () => {
 
   return (
     <div className="p-6 space-y-6">
-      <h2 className="text-2xl font-bold text-[#343C6A]">Credit Cards</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {cards.map((card) => (
           <Card key={card.id} card={card} />

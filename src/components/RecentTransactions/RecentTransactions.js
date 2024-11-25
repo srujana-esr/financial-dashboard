@@ -40,7 +40,7 @@ const RecentTransactions = () => {
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-lg font-bold text-[#343C6A]">Recent Transactions</h2>
       </div>
-      <div className="bg-white shadow rounded-lg p-6">
+      <div className="bg-white rounded-2xl shadow-md p-6">
       <ul className="space-y-4">
         {transactions.map((transaction) => {
           const iconType = getIconType(transaction.label);
