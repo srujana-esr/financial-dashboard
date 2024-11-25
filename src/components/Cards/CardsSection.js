@@ -16,7 +16,7 @@ const CardsSection = () => {
   }
 
   return (
-    <div className="mb-6">
+    <div className="mb-7">
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-xl font-bold text-[#343C6A]">My Cards</h2>
         <button className="text-[#8BA3CB] hover:underline">See All</button>
