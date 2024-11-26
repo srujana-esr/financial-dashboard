@@ -38,7 +38,7 @@ const Header = ({ toggleSidebar }) => {
             onClick={() => setIsProfileMenuOpen(!isProfileMenuOpen)}
           >
             <img
-              src="/profile-images/christina-morillo.png"
+              src="https://picsum.photos/seed/profile2/64"
               alt="Profile"
               className="w-full h-full object-cover"
             />
@@ -74,7 +74,7 @@ const Header = ({ toggleSidebar }) => {
             onClick={() => setIsProfileMenuOpen(!isProfileMenuOpen)}
           >
             <img
-              src="/profile-images/christina-morillo.png"
+              src="https://picsum.photos/seed/profile2/64"
               alt="Profile"
               className="w-full h-full object-cover"
             />

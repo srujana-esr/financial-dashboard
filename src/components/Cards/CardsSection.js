@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Card from '../Cards/Card';
-import { fetchCards } from '../../api/cardsApi';
+import { fetchCards } from '../../api/CardsApi';
 
 const CardsSection = () => {
   const [cards, setCards] = useState([]);
