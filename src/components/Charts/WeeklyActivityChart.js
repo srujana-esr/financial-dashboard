@@ -101,12 +101,12 @@ const WeeklyActivityChart = () => {
   };
 
   return (
-    <>
+    <div className="mb-7">
       <h2 className="text-lg font-bold text-[#343C6A] pb-4">Weekly Activity</h2>
     <div className="p-4 bg-white rounded-2xl shadow-md h-[322px]">
       <Bar data={chartData} options={chartOptions} />
     </div>
-    </>
+    </div>
   );
 };
 
