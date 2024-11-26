@@ -10,7 +10,7 @@ export const fetchWeeklyActivity = async () => {
           { day: 'Thu', deposit: 300, withdraw: 500 },
           { day: 'Fri', deposit: 400, withdraw: 400 },
         ]);
-      }, 1000);
+      }, 100);
     });
   };
   

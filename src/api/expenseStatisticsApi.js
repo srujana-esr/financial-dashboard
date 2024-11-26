@@ -7,7 +7,7 @@ export const fetchExpenseStatistics = async () => {
           { category: 'Investment', value: 20 },
           { category: 'Others', value: 35 },
         ]);
-      }, 1000);
+      }, 100);
     });
   };
   

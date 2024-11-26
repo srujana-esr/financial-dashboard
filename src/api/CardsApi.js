@@ -43,6 +43,6 @@ export const fetchCards = async () => {
           theme: 'light',
         },
       ]);
-    }, 1000);
+    }, 100);
   });
 };

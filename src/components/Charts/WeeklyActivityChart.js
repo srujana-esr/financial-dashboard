@@ -17,16 +17,16 @@ const WeeklyActivityChart = () => {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    const fetchData = async () => {
+    const loadData = async () => {
       const activityData = await fetchWeeklyActivity(); 
       setData(activityData);
     };
 
-    fetchData();
+    loadData();
   }, []);
 
   if (!data) {
-    return <div className="text-center">Loading...</div>;
+    return null;
   }
 
   const chartData = {
@@ -37,16 +37,16 @@ const WeeklyActivityChart = () => {
         data: data.map((item) => item.withdraw),
         backgroundColor: '#232323',
         borderRadius: 30,
-        barPercentage: 0.8,
-        categoryPercentage: 0.4,
+        barPercentage: 0.6,
+        categoryPercentage: 0.6,
       },
       {
         label: 'Deposit',
         data: data.map((item) => item.deposit),
         backgroundColor: '#396AFF',
         borderRadius: 30,
-        barPercentage: 0.8,
-        categoryPercentage: 0.4,
+        barPercentage: 0.6,
+        categoryPercentage: 0.6,
       },
     ],
   };
@@ -56,10 +56,10 @@ const WeeklyActivityChart = () => {
     maintainAspectRatio: false,
     layout: {
       padding: {
-        top: 25,
-        right: 0,
-        bottom: 25,
-        left: 0,
+        top: 15,
+        right: 30,
+        bottom: 15,
+        left: 30,
       },
     },
     scales: {
@@ -83,14 +83,19 @@ const WeeklyActivityChart = () => {
       },
     },
     plugins: {
+      tooltip: {
+        enabled: true, 
+      },
       legend: {
         position: 'top',
-        align: 'end', 
+        align: 'end',
         labels: {
           usePointStyle: true,
-          font: { size: 13 },
-          padding: 15, 
+          font: { size: 11 },
         },
+      },
+      datalabels: {
+        display: false, 
       },
     },
   };
@@ -98,9 +103,9 @@ const WeeklyActivityChart = () => {
   return (
     <>
       <h2 className="text-lg font-bold text-[#343C6A] pb-4">Weekly Activity</h2>
-      <div className="p-4 bg-white rounded-2xl shadow-md h-[322px]">
-        <Bar data={chartData} options={chartOptions} />
-      </div>
+    <div className="p-4 bg-white rounded-2xl shadow-md h-[322px]">
+      <Bar data={chartData} options={chartOptions} />
+    </div>
     </>
   );
 };

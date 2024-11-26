@@ -1,10 +1,26 @@
-import React from 'react';
+import React, { useState, useEffect }  from 'react';
 import WeeklyActivityChart from '../../components/Charts/WeeklyActivityChart';
 import ExpenseStatisticsChart from '../../components/Charts/ExpenseStatisticsChart';
 import CardsSection from '../../components/Cards/CardsSection';
 import RecentTransactions from '../../components/RecentTransactions/RecentTransactions';
+import Loader from '../../components/Loader/loader';
 
 const Dashboard = () => {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const loadAllData = async () => {
+      await Promise.all([new Promise((res) => setTimeout(res, 1000))]);
+      setIsLoading(false);
+    };
+
+    loadAllData();
+  }, []);
+
+  if (isLoading) {
+    return <Loader />;
+  }
+
   return (
     <div className="space-6">
       <div className="grid grid-cols-1 md:grid-cols-10 gap-6">
