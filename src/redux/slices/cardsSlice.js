@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { fetchCards as fetchCardsApi } from '../../api/CardsApi';
+import { fetchCards as fetchCardsApi } from '../../api/cardsApi';
 
 export const fetchCards = createAsyncThunk('cards/fetchCards', async () => {
   const response = await fetchCardsApi();

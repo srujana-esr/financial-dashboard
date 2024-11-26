@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { fetchCards } from '../../api/CardsApi';
 import Card from '../Cards/Card';
+import { fetchCards } from '../../api/cardsApi';
 
 const CardsSection = () => {
   const [cards, setCards] = useState([]);
@@ -17,7 +17,7 @@ const CardsSection = () => {
     <div className="mb-7">
       <div className="flex items-center justify-between">
         <h2 className="text-lg font-bold text-[#343C6A]">My Cards</h2>
-        <a href="/credit-cards" className="text-sm text-[#8BA3CB] hover:underline">
+        <a href="/credit-cards" className="text-md font-bold hover:text-[#343C6A] text-[#8BA3CB] hover:underline">
           See All
         </a>
       </div>

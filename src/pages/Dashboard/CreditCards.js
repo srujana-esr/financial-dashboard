@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { fetchCards } from '../../api/CardsApi';
+import { fetchCards } from '../../api/cardsApi';
 import Card from '../../components/Cards/Card';
 
 const CreditCardsPage = () => {
