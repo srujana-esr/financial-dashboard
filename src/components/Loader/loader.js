@@ -1,6 +1,6 @@
 import React from 'react';
 import './loader.css';
-import marioRunning from './scrooge-mcduck-money.gif'; 
+import marioRunning from './Loader.gif'; 
 
 const Loader = () => {
   return (
