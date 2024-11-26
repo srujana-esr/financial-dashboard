@@ -24,7 +24,7 @@ export const fetchTransactions = async () => {
             type: 'income',
           },
         ]);
-      }, 1000);
+      }, 100);
     });
   };
   

@@ -1,0 +1,21 @@
+.loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  
+  .loader img {
+    width: 100px;
+    animation: run 1s steps(10) infinite;
+  }
+  
+  @keyframes run {
+    from {
+      transform: translateX(-20px);
+    }
+    to {
+      transform: translateX(20px);
+    }
+  }
+  

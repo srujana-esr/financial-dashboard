@@ -4,36 +4,38 @@ import {
   Chart as ChartJS,
   ArcElement,
   Tooltip,
-  Legend,
 } from 'chart.js';
+import ChartDataLabels from 'chartjs-plugin-datalabels';
 import { fetchExpenseStatistics } from '../../api/expenseStatisticsApi';
 
-ChartJS.register(ArcElement, Tooltip, Legend);
+ChartJS.register(ArcElement, Tooltip, ChartDataLabels);
 
 const ExpenseStatisticsChart = () => {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    const fetchData = async () => {
+    const loadData = async () => {
       const stats = await fetchExpenseStatistics();
       setData(stats);
     };
 
-    fetchData();
+    loadData();
   }, []);
 
   if (!data) {
-    return <div className="text-center">Loading...</div>;
+    return null; 
   }
 
   const chartData = {
-    labels: ['Entertainment', 'Bill Expense', 'Investment', 'Others'],
+    labels: data.map((item) => item.category),
     datasets: [
       {
         data: data.map((item) => item.value),
         backgroundColor: ['#343C6A', '#FF8551', '#396AFF', '#232323'],
         hoverBackgroundColor: ['#4A4E8A', '#FFA070', '#4A80FF', '#3A3A3A'],
-        borderWidth: 0,
+        borderWidth: 10, 
+        borderColor: '#ffffff',
+        hoverOffset: 50, 
       },
     ],
   };
@@ -42,24 +44,43 @@ const ExpenseStatisticsChart = () => {
     responsive: true,
     maintainAspectRatio: false,
     plugins: {
-      legend: {
-        position: 'right',
-        labels: {
-          usePointStyle: true,
-          font: { size: 13, family: 'Inter' },
+      tooltip: {
+        enabled: false, 
+        callbacks: {
+          label: (context) => `${context.label}: ${context.raw}%`,
         },
       },
+      legend: {
+        display: false, 
+      },
+      datalabels: {
+        color: '#fff',
+        formatter: (value, context) => {
+          const label = context.chart.data.labels[context.dataIndex];
+          return `${value}%\n${label}`; 
+        },
+        anchor: 'center',
+        align: 'center',
+        font: {
+          size: 12,
+          weight: 'bold',
+        },
+        padding: 10,
+      },
+    },
+    cutout: '0', 
+    animation: {
+      animateScale: true, 
+      animateRotate: true, 
     },
   };
 
   return (
     <>
-          <h2 className="text-lg font-bold text-[#343C6A] pb-4">Expense Statistics</h2>
-
-    <div className="p-4 bg-white rounded-2xl shadow-md h-[322px]">
-      <Doughnut data={chartData} options={chartOptions} />
-    </div>
-
+      <h2 className="text-lg font-bold text-[#343C6A] pb-4">Expense Statistics</h2>
+      <div className="p-4 bg-white rounded-2xl shadow-md h-[322px] flex justify-center items-center relative">
+        <Doughnut data={chartData} options={chartOptions} />
+      </div>
     </>
   );
 };
