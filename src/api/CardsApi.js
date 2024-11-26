@@ -34,14 +34,7 @@ export const fetchCards = async () => {
           validThru: '01/25',
           theme: 'light',
         },
-        {
-          id: 5,
-          balance: '$1,450',
-          cardHolder: 'Bob Brown',
-          cardNumber: '4111 **** **** 2222',
-          validThru: '11/24',
-          theme: 'light',
-        },
+        
       ]);
     }, 100);
   });

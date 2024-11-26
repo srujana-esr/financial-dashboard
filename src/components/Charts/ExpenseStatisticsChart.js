@@ -76,12 +76,12 @@ const ExpenseStatisticsChart = () => {
   };
 
   return (
-    <>
+    <div className="mb-7">
       <h2 className="text-lg font-bold text-[#343C6A] pb-4">Expense Statistics</h2>
       <div className="p-4 bg-white rounded-2xl shadow-md h-[322px] flex justify-center items-center relative">
         <Doughnut data={chartData} options={chartOptions} />
       </div>
-    </>
+    </div>
   );
 };
 
